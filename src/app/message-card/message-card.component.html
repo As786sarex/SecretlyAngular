@@ -1,0 +1,31 @@
+<section class="section section-lg pt-lg-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card card-lift--hover shadow border-0"
+                 [ngClass]="{
+                 'bg-gradient-success':'bg-gradient-success'=== currentBg,
+                 'bg-gradient-info':'bg-gradient-info'=== currentBg,
+                 'bg-gradient-warning':'bg-gradient-warning'=== currentBg,
+                 'bg-gradient-danger':'bg-gradient-danger'=== currentBg,
+                 'bg-gradient-primary':'bg-gradient-primary'=== currentBg}"
+                 [id]="messageItem.id">
+              <div class="card-body py-5">
+                <p style="padding-left: 30px;padding-right: 30px; text-align: center;" [innerText]="messageItem.message"
+                   class="display-4 mt-3 text-white justify-content-center">
+                </p>
+              </div>
+            </div>
+
+            <a *ngIf="messageItem.id!=null" (click)="downloadImage(messageItem.id)" style="float: right;"
+               class="btn btn-outline-warning btn-round btn-block btn-lg mt-4">
+              Download Message
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

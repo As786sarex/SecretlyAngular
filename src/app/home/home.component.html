@@ -1,0 +1,143 @@
+<main>
+  <div class="position-relative">
+    <section class="section section-lg section-hero section-shaped">
+      <!-- Background circles -->
+
+      <div class="shape shape-style-1 bg-gradient-success">
+
+      </div>
+      <div class="container shape-container d-flex align-items-center py-lg">
+        <div class="col px-0">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-lg-6 text-center">
+              <img src="../../assets/img/social-media.svg" style="width: 200px;" class="img-fluid">
+              <strong><p class="lead text-white">Send Secret Messages to loved ones.</p></strong>
+              <div *ngIf="!isAuthenticated" class="btn-wrapper mt-5">
+                <a (click)="scroll(register_section) "
+                   class="btn btn-lg btn-white btn-icon mb-3 mb-sm-0">
+                  <span class="btn-inner--icon"><i class="ni ni-lock-circle-open"></i></span>
+                  <span class="btn-inner--text">Register Now</span>
+                </a>
+              </div>
+              <div *ngIf="isAuthenticated" class="btn-wrapper mt-5">
+                <a [routerLink]="['/showMessages']"
+                   class="btn btn-lg btn-white btn-icon mb-3 mb-sm-0">
+                  <span class="btn-inner--text">Show Messages</span>
+                </a>
+              </div>
+              <div class="mt-5">
+                <small class="text-white font-weight-bold mb-0 mr-2">*proudly coded by</small>
+                <strong class="text-white">@Asif</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SVG separator -->
+      <!--<div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
+             xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>-->
+    </section>
+    <div class="py-3 bg-secondary">
+      <div class="container py-md">
+        <!-- Inputs (alternative) -->
+
+      </div>
+    </div>
+    <div class="py-5 bg-secondary">
+      <div class="container py-sm">
+        <!-- Inputs (alternative) -->
+
+      </div>
+    </div>
+    <section class="section section-lg section-shaped">
+      <div class="shape shape-style-1 shape-default">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="container py-md">
+        <div class="row row-grid justify-content-between align-items-center">
+          <div class="col-lg-6">
+            <h3 class="display-3 text-white">Secretly Application
+              <span class="text-white">A secret messaging application</span>
+            </h3>
+            <p class="lead text-white">With this application you can send secret messages to your friends.
+            Register or Login now to send secret messages on-the-go</p>
+            <div *ngIf="!isAuthenticated" class="btn-wrapper">
+              <a [routerLink]="['/login']" class="btn btn-success">Login Page</a>
+              <a (click)="scroll(register_section)" class="btn btn-white">Register Page</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- SVG separator -->
+    </section>
+    <section #register_section class="section section-lg bg-secondary"
+             style="padding-top: 100px;">
+      <div *ngIf="!isAuthenticated" class="container">
+        <div class="col-lg-12">
+          <div class="card bg-gradient-secondary shadow">
+            <div class="card-body p-lg-5">
+              <h4 class="mb-1">Want to receive secret messages of your own?</h4>
+              <p class="mt-0">Register with a new account.</p>
+              <form
+                [formGroup]="registerFormGroup" (ngSubmit)="registerWithName(classic2)">
+                <div class="form-group mt-5" [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-user-run"></i></span>
+                    </div>
+                    <input class="form-control" formControlName="name" placeholder="Your name" type="text"
+                           (focus)="focus=true"
+                           (blur)="focus=false">
+                  </div>
+                </div>
+                <div *ngIf="enabled">
+                  <button type="submit" [disabled]="!registerFormGroup.valid"
+                          class="btn btn-default btn-round btn-block btn-lg">Register Now
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="col-md-4">
+      <ng-template #classic2 let-c="close" let-d="dismiss">
+        <div class="modal-content bg-gradient-danger">
+          <div class="modal-header">
+            <h6 class="modal-title" id="modal-title-notification">Your attention is required</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body" *ngIf="!!registeredUser">
+            <div class="py-3 text-center">
+              <i class="ni ni-badge ni-3x"></i>
+              <h4 class="heading mt-4">Please note your username and password</h4>
+              <p><strong>Username</strong> :  {{registeredUser.userName}}</p>
+              <p><strong>Password </strong>: {{registeredUser.password}}</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-white" [routerLink]="['/login']">Goto Login</button>
+            <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal"
+                    (click)="c('Close click')">Close
+            </button>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</main>

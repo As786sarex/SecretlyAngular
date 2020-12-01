@@ -3,8 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
-};
+    production: false,
+    BASE_URL: 'https://secretly-backend.herokuapp.com',
+    jwt_bearer_header: 'auth_header',
+    name_localstorage: 'user',
+    send_msg_base: 'https://secretlymsg.firebaseapp.com/sendMessage/'
+  }
+;
 
 /*
  * For easier debugging in development mode, you can import the following file
